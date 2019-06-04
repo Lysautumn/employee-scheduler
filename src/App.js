@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { HashRouter as Router, Route, Redirect, Switch,} from 'react-router-dom';
+
+import LandingPage from './components/LandingPage';
+import ManagerView from './components/ManagerView';
+import EmployeeView from './components/EmployeeView';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          <Redirect exact path="/" to="/home"/>
+          <Route
+            path="/home"
+            component={LandingPage}
+          />
+          <Route 
+            path="/manager-view"
+            component={ManagerView}
+          />
+          <Route
+            path="/employee-view"
+            component={EmployeeView}
+          />
+        </Switch>
+      </Router>
     </div>
   );
 }

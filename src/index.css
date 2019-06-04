@@ -7,11 +7,4 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.role-button {
-  width: 45%;
-  margin: 5%;
-  display: flex;
-  justify-content: center;
-}
-
 

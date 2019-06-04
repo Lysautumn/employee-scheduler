@@ -1,12 +1,22 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
+import { Link } from 'react-router-dom';
+import Fab from '@material-ui/core/Fab'
+import { Face } from '@material-ui/icons';
 
+const style = {
+    button: {
+        "margin": "20px"
+    }
+}
 
 const EmployeeButton = () => (
     <div>
-        <h1></h1>
+        <Link to="/employee-view">
+            <Fab variant="extended" aria-label="Employee" style={style.button}>
+                <Face />
+                Employee
+            </Fab>
+        </Link>
     </div>
 )
 

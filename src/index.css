@@ -7,7 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.role-button {
+  width: 45%;
+  margin: 5%;
+  display: flex;
+  justify-content: center;
 }
+
+

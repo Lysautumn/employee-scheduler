@@ -1,0 +1,9 @@
+.paper {
+    height: 200px;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

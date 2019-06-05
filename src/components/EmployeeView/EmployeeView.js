@@ -5,6 +5,12 @@ import { FormControl, InputLabel, Select, MenuItem, Button } from '@material-ui/
 
 import ShiftTable from '../ShiftTable';
 
+const styles = {
+    button: {
+        marginTop: '5px',
+    }
+}
+
 class EmployeeView extends Component {
     constructor(props) {
         super(props);
@@ -15,30 +21,33 @@ class EmployeeView extends Component {
         }
     }
 
+    // When component mounts, populate employee dropdown
     componentDidMount() {
         this.getEmployeeNames();
     }
 
+    // Query database for employee names for dropdown
     getEmployeeNames = () => {
         axios({
             method: 'GET',
             url: '/employee/employee-names'
         }).then( response => {
-            console.log(response);
             this.setState({
                 employees: response.data,
             });
         }).catch( error => {
-            console.log(error)
+            console.log('Error from GET, employee names', error);
         })
     }
 
+    // Capture selected employee from dropdown
     handleChangeFor = propertyName => event => {
         this.setState({
             [propertyName]: event.target.value,
         })
     }
 
+    // When Get Shifts button is clicked, get selected employee's shifts
     getEmployeeShifts = event => {
         event.preventDefault();
         let employeeToGet = this.state.selectedEmployee
@@ -46,12 +55,11 @@ class EmployeeView extends Component {
             method: 'GET',
             url: '/employee/' + employeeToGet,
         }).then( response => {
-            console.log(response);
             this.setState({
                 shifts: response.data,
             })
         }).catch( error => {
-            console.log(error);
+            console.log('Error from GET, employee shifts', error);
         })
     }
 
@@ -71,7 +79,7 @@ class EmployeeView extends Component {
                             })}
                         </Select>
                     </FormControl>
-                    <Button variant="contained" onClick={this.getEmployeeShifts}>Get Shifts</Button>
+                    <Button style={styles.button} variant="contained" onClick={this.getEmployeeShifts}>Get Shifts</Button>
                 </form>
                 <ShiftTable shifts={this.state.shifts} />
             </div>

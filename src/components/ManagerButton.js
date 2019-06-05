@@ -5,7 +5,7 @@ import { CalendarToday } from '@material-ui/icons';
 
 const style = {
     button: {
-        "margin": "20px",
+        margin: "20px",
     }
 }
 

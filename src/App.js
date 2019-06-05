@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Redirect, Switch,} from 'react-router-dom'
 
 import LandingPage from './components/LandingPage/LandingPage';
 import ManagerView from './components/ManagerView';
-import EmployeeView from './components/EmployeeView';
+import EmployeeView from './components/EmployeeView/EmployeeView';
 
 function App() {
   return (

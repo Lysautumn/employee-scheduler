@@ -3,12 +3,16 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import ShiftTable from '../ShiftTable';
+import Header from '../Header/Header';
 
-const styles = {
+const style = {
     buttonContainer: {
         display: 'flex',
         justifyContent: 'center',
-        marginBottom: '20px',
+        margin: '20px',
+    },
+    link: {
+        textDecoration: 'none',
     }
 }
 
@@ -42,9 +46,9 @@ class ManagerView extends Component {
     render() {
         return (
             <div>
-                <h1>This is the manager view</h1>
-                <div style={styles.buttonContainer}>
-                    <Link to="/add"><Button variant="contained">Add New Shift</Button></Link>
+                <Header />
+                <div style={style.buttonContainer}>
+                    <Link style={style.link} to="/add"><Button variant="contained">Add New Shift</Button></Link>
                 </div>
                 <ShiftTable shifts={this.state.shifts} />
             </div>

@@ -5,13 +5,16 @@ import { Face } from '@material-ui/icons';
 
 const style = {
     button: {
-        margin: "20px"
+        margin: '20px',
+    },
+    link: {
+        textDecoration: 'none',
     }
 }
 
 const EmployeeButton = () => (
     <div>
-        <Link to="/employee-view">
+        <Link style={style.link} to="/employee-view">
             <Fab variant="extended" aria-label="Employee" style={style.button}>
                 <Face />
                 Employee

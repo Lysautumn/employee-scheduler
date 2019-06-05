@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../index.css';
 import { FormControl, InputLabel, Select, MenuItem, Button } from '@material-ui/core';
-
+import Header from './Header/Header';
 import ShiftTable from './ShiftTable';
 
 const styles = {
@@ -66,7 +66,7 @@ class EmployeeView extends Component {
     render() {
         return (
             <div>
-                <h1>This is the employee view</h1>
+                <Header />
                 <form>
                     <FormControl fullWidth>
                         <InputLabel htmlFor="employees">Employees</InputLabel>

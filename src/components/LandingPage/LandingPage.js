@@ -2,14 +2,19 @@ import React from 'react';
 import './LandingPage.css';
 import ManagerButton from '../ManagerButton';
 import EmployeeButton from '../EmployeeButton';
-import Paper from '@material-ui/core/Paper'
+import Paper from '@material-ui/core/Paper';
+import Header from '../Header/Header';
 
 const LandingPage = () => (
     <div>
-        <h1>This is the landing page</h1>
+        <Header />
         <Paper className="paper">
-            <ManagerButton />
-            <EmployeeButton />
+            <h2>Select a role:</h2>
+            <div className="button-container">
+                <ManagerButton />
+                <EmployeeButton />
+            </div>
+
         </Paper>
     </div>
 )

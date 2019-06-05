@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { FormControl, InputLabel, Select, MenuItem, Button, TextField } from '@material-ui/core';
-
+import Header from './Header/Header';
 import ShiftTable from './ShiftTable';
 
 const styles = {
@@ -131,7 +131,7 @@ class AddPage extends Component {
     render() {
         return (
             <div>
-                <h1>This is the add page</h1>
+                <Header />
                 <form>
                     <FormControl fullWidth>
                         <InputLabel htmlFor="employees">Employees</InputLabel>

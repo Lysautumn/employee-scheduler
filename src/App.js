@@ -9,6 +9,7 @@ import AddPage from './components/AddPage';
 function App() {
   return (
     <div className="App">
+
       <Router>
         <Switch>
           <Redirect exact path="/" to="/home"/>

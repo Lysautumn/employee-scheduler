@@ -6,12 +6,15 @@ import { CalendarToday } from '@material-ui/icons';
 const style = {
     button: {
         margin: "20px",
+    },
+    link: {
+        textDecoration: 'none',
     }
 }
 
 const ManagerButton = () => (
     <div>
-        <Link to="/manager-view">
+        <Link style={style.link} to="/manager-view">
             <Fab variant="extended" aria-label="Manager" style={style.button}>
                 <CalendarToday />
                 Manager

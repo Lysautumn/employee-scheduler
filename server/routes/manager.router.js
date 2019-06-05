@@ -16,4 +16,17 @@ router.get('/', (req, res) => {
         })
 })
 
+// Post new shift
+router.post('/new-shift', (req, res) => {
+    console.log(req.body);
+    let queryString = `INSERT INTO "shift" (emp_id, start_time, end_time) VALUES ($1, $2, $3)`;
+    pool.query(queryString, [req.body.emp_id, req.body.start_time, req.body.end_time])
+        .then(result => {
+            res.sendStatus(201);
+        }).catch(error => {
+            console.log(error);
+            res.sendStatus(500);
+        })
+})
+
 module.exports = router;

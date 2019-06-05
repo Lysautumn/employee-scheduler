@@ -2,8 +2,9 @@ import React from 'react';
 import { HashRouter as Router, Route, Redirect, Switch,} from 'react-router-dom';
 
 import LandingPage from './components/LandingPage/LandingPage';
-import ManagerView from './components/ManagerView';
-import EmployeeView from './components/EmployeeView/EmployeeView';
+import ManagerView from './components/ManagerView/ManagerView';
+import EmployeeView from './components/EmployeeView';
+import AddPage from './components/AddPage';
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
           <Route
             path="/employee-view"
             component={EmployeeView}
+          />
+          <Route 
+            path="/add"
+            component={AddPage}
           />
           <Route render={() => <h1>404</h1>} />
         </Switch>

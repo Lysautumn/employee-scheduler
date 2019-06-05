@@ -1,68 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Employee Scheduler
 
-## Available Scripts
+Welcome to my employee scheduler! This app allows users to select between a `Manager` or `Employee` role. The Manager role allows users to see all shifts scheduled, ordered by date. The Manager is also able to see the schedule of a specific employee and schedule new shifts. The Employee is able to see the shifts of individual employees.
 
-In the project directory, you can run:
+This app can be accessed here: or run locally following the instructions below:
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- Node/npm
+- Postgresql v11.2
+- I recommend a Postgresql client, such as [Postico](https://eggerapps.at/postico/)
+- I recommend a GUI to hit API endpoints, such as [Postman](https://www.getpostman.com/)
 
-### `npm test`
+### Steps
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Adjust config settings for database in `server/modules/pool.js` file
+- Run Postgresql queries in the `database.sql` file to get the databases set up
+- Clone the [repo](https://github.com/Lysautumn/employee-scheduler) for this project to your local machine
+- `cd` into the project
+- Run `npm install` to install required dependencies
+- Open a second Terminal window in the same directory
+- Run `npm run server` in one Terminal window
+- Run `npm run client` in the other Terminal window, this should open http://localhost:3000 in your browser. If not, navigate to that url to view the app.
 
-### `npm run build`
+## Accessing API Endpoints
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In order to access some of the API endpoints, you may need to provide information in the following formats:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Integers (ids)
+- Dates as `"2019-07-20T10:00:00Z"` (start and end dates)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To view all scheduled shifts (ordered by date): `GET http://localhost:5000/manager`
 
-### `npm run eject`
+To view scheduled shifts for a specific employee: `GET http://localhost:5000/employee/:id`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To add a new shift to the schedule: `POST http://localhost:5000/manager/new-shift` with the following request body format:
+```
+{
+    emp_id: 1,
+    start_time: '2019-06-20T19:30:00.000Z',
+    end_time: '2019-06-20T19:30:00.000Z'
+}
+```
+*Note*: Make sure data is sent as type `application/x-www-form-url-encoded`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Future 
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Refactor the backend in Go as a mechanism to learn the language
+- Authentication has not been implemented on this project, and would be a natural next step to provide a more realistic separation between manager and employee roles
+- Implement Redux to make state management easier and make the front-end code less repetitive
+- Implement testing
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Technologies Used
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- React
+- Node.js
+- Express
+- Postgresql
+- Axios
+- MomentJS
+- Material UI

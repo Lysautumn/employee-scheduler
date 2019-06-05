@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import ShiftTable from '../ShiftTable';
 
-import ShiftTable from './ShiftTable';
+const styles = {
+    buttonContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginBottom: '20px',
+    }
+}
 
 class ManagerView extends Component {
     constructor(props) {
@@ -34,6 +43,9 @@ class ManagerView extends Component {
         return (
             <div>
                 <h1>This is the manager view</h1>
+                <div style={styles.buttonContainer}>
+                    <Link to="/add"><Button variant="contained">Add New Shift</Button></Link>
+                </div>
                 <ShiftTable shifts={this.state.shifts} />
             </div>
         )

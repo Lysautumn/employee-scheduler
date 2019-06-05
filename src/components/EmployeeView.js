@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './EmployeeView.css';
+import '../index.css';
 import { FormControl, InputLabel, Select, MenuItem, Button } from '@material-ui/core';
 
-import ShiftTable from '../ShiftTable';
+import ShiftTable from './ShiftTable';
 
 const styles = {
     button: {

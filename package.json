@@ -42,5 +42,9 @@
   "main": "index.js",
   "devDependencies": {},
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "12.1.0",
+    "npm": "6.9.0"
+  }
 }

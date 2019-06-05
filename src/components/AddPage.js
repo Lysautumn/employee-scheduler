@@ -76,7 +76,7 @@ class AddPage extends Component {
         return newDate;
     }
 
-    // Post new shift to database
+    // Validate no shift overlap, then post new shift to database
     postNewShift = event => {
         event.preventDefault();
         let startTime = this.convertDates(this.state.newStartDate, this.state.newStartTime);
@@ -87,20 +87,37 @@ class AddPage extends Component {
             end_time: endTime,
         }
         axios({
-            method: 'POST',
-            url: '/manager/new-shift',
-            data: newShiftObject
-        }).then(response => {
-            this.setState({
-                showForm: false,
-                newStartDate:'',
-                newStartTime:'',
-                newEndDate:'',
-                newEndTime:'',
+            method: 'GET',
+            url: '/manager'
+        }).then( response => {
+            for(let shift of response.data) {
+                if(newShiftObject.start_time >= shift.start_time && newShiftObject.start_time <= shift.end_time){
+                    alert('Shift start time overlaps another shift, please edit.');
+                    return;
+                } else if (newShiftObject.end_time >= shift.start_time && newShiftObject.end_time <= shift.end_time) {
+                    alert('Shift end time overlaps another shift, please edit.');
+                    return;
+                }
+            }
+            axios({
+                method: 'POST',
+                url: '/manager/new-shift',
+                data: newShiftObject
+            }).then(response => {
+                this.setState({
+                    showForm: false,
+                    newStartDate:'',
+                    newStartTime:'',
+                    newEndDate:'',
+                    newEndTime:'',
+                })
+            }).catch(error => {
+                console.log('Error in POST:', error);
             })
         }).catch(error => {
-            console.log('Error in POST:', error);
+            console.log('Error in GET, all shifts', error);
         })
+
     }
 
     // Toggle add shift form

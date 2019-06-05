@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './EmployeeView.css';
-import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
+import { FormControl, InputLabel, Select, MenuItem, Button } from '@material-ui/core';
 
 import ShiftTable from '../ShiftTable';
 
@@ -27,7 +27,7 @@ class EmployeeView extends Component {
             console.log(response);
             this.setState({
                 employees: response.data,
-            })
+            });
         }).catch( error => {
             console.log(error)
         })
@@ -39,10 +39,12 @@ class EmployeeView extends Component {
         })
     }
 
-    getEmployeeShifts = () => {
+    getEmployeeShifts = event => {
+        event.preventDefault();
+        let employeeToGet = this.state.selectedEmployee
         axios({
             method: 'GET',
-            url: '/manager'
+            url: '/employee/' + employeeToGet,
         }).then( response => {
             console.log(response);
             this.setState({
@@ -69,6 +71,7 @@ class EmployeeView extends Component {
                             })}
                         </Select>
                     </FormControl>
+                    <Button variant="contained" onClick={this.getEmployeeShifts}>Get Shifts</Button>
                 </form>
                 <ShiftTable shifts={this.state.shifts} />
             </div>

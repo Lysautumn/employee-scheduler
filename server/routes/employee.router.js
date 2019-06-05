@@ -13,4 +13,17 @@ router.get('/employee-names', (req, res) => {
         })
 })
 
+router.get('/:id', (req, res) => {
+    let id = req.params.id;
+    let queryString = `SELECT shift.id, start_time, end_time, name, role, email, phone 
+    FROM "shift" JOIN "user" on "user".id = "shift".emp_id WHERE "user".id = $1 ORDER BY "start_time";`
+    pool.query(queryString, [id])
+        .then( result => {
+            res.send(result.rows);
+        }).catch( error => {
+            console.log('Error in GET, employee names', error);
+            res.sendStatus(500);
+        })
+})
+
 module.exports = router;

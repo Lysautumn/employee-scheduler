@@ -9,23 +9,24 @@ class ManagerView extends Component {
         this.state = {
             shifts: []
         }
-    }
+    }   
 
+    // When component mounts, get all shifts from database for table
     componentDidMount() {
         this.getAllShifts();
     }
 
+    // Query database for all scheduled shifts
     getAllShifts = () => {
         axios({
             method: 'GET',
             url: '/manager'
         }).then( response => {
-            console.log(response);
             this.setState({
                 shifts: response.data
             })
         }).catch( error => {
-            console.log(error);
+            console.log('Error in GET, all shifts', error);
         })
     }
 

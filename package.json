@@ -38,7 +38,7 @@
       "last 1 safari version"
     ]
   },
-  "description": "Employee Scheduler created with React, Go and Gin",
+  "description": "Employee Scheduler created with React, Node, Express and Postgres",
   "main": "index.js",
   "devDependencies": {},
   "author": "",

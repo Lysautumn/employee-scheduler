@@ -2,7 +2,7 @@
 
 Welcome to my employee scheduler! This app allows users to select between a `Manager` or `Employee` role. The Manager role allows users to see all shifts scheduled, ordered by date. The Manager is also able to see the schedule of a specific employee and schedule new shifts. The Employee is able to see the shifts of individual employees.
 
-This app can be accessed here: or run locally following the instructions below:
+This app can be accessed [here](https://employee-scheduler.herokuapp.com) or run locally following the instructions below:
 
 ## Installation
 
@@ -47,7 +47,7 @@ To add a new shift to the schedule: `POST http://localhost:5000/manager/new-shif
 
 ## Future 
 
-- Refactor the backend in Go as a mechanism to learn the language
+- Refactor the backend in Go as a mechanism to practice what I've learned about the language
 - Authentication has not been implemented on this project, and would be a natural next step to provide a more realistic separation between manager and employee roles
 - Implement Redux to make state management easier and make the front-end code less repetitive
 - Implement testing

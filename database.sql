@@ -10,8 +10,7 @@ CREATE TABLE "user" (
 -- Create shift table
 CREATE TABLE "shift" (
 	id serial PRIMARY KEY,
-	emp_id INT NOT NULL,
-	FOREIGN KEY (emp_id) REFERENCES "user"(id),
+	emp_id INT NOT NULL REFERENCES "user",
 	start_time TIMESTAMP NOT NULL,
 	end_time TIMESTAMP NOT NULL
 );

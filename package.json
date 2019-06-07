@@ -20,7 +20,7 @@
   "scripts": {
     "start": "node server/server.js",
     "client": "react-scripts start",
-    "server": "nodemon --watch server server/server.js",
+    "server": "go run server/main.go",
     "build": "react-scripts build"
   },
   "eslintConfig": {
